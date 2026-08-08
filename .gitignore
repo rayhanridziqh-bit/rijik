@@ -1,31 +1,188 @@
-# Built things
-_Debug/
-Compiled/
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Untuk Nela ❤️</title>
 
-# AudioCache can be rebuilt from sources
-AudioCache/
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-# Lockfile
-_OpenInEditor.lock
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      color: white;
+    }
 
-# User settings
-Game.agf.user
-*.crm.user
+    .container {
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      padding: 35px 25px;
+      border-radius: 25px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
 
-# Backups
-Game.agf.bak
-backup_acsprset.spr
+    .heart {
+      font-size: 80px;
+      animation: beat 1s infinite;
+      margin-bottom: 15px;
+    }
 
-# Memory dumps
-*.dmp
+    h1 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
 
-# Temporary files
-# temporarily created during sprite or room background compression
-~aclzw.tmp
-# temporary, main game data, before getting packed into exe
-game28.dta
-# temporary build of the game before being moved to Compiled/ folder
-*.exe
+    p {
+      font-size: 17px;
+      line-height: 1.7;
+      margin-bottom: 25px;
+    }
 
-# Log files
-warnings.log
+    button {
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      background: white;
+      color: #ff4f81;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.08);
+    }
+
+    #message {
+      display: none;
+      margin-top: 25px;
+      animation: fadeIn 1s ease;
+    }
+
+    .from {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .floating-heart {
+      position: absolute;
+      bottom: -30px;
+      font-size: 22px;
+      animation: float 6s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.18);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="heart">❤️</div>
+
+    <h1>Untuk Nela 🤗</h1>
+
+    <p>
+      Ada satu orang yang akhir-akhir ini selalu
+      muncul di pikiran aku...
+      <br><br>
+      Iya, kamu, Nela. ❤️
+    </p>
+
+    <button onclick="showMessage()">
+      Klik di sini 💌
+    </button>
+
+    <div id="message">
+      <p>
+        Aku mungkin nggak selalu pandai mengungkapkan
+        perasaan lewat kata-kata.
+        <br><br>
+        Tapi kalau boleh jujur,
+        aku senang setiap kali ada kamu.
+        <br><br>
+        Semoga kamu tahu,
+        ada seseorang yang selalu ingin melihat
+        kamu tersenyum. ❤️
+      </p>
+
+      <div class="from">
+        — Rijik 🤗❤️
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.innerHTML = ["❤️","💕","💗","💖","💘"][Math.floor(Math.random()*5)];
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 500);
+  </script>
+
+</body>
+</html>
